@@ -16,7 +16,7 @@ In this case, a topological ordering is just a legitimate task sequence. A topol
 
 # Algorithm
 
-<img src="1.jpeg" height="300" width="400">
+<img src="1.jpeg" height="400" width="400">
 
 ```
 topological_sort(N, adj[N][N])
@@ -59,7 +59,7 @@ This is a common algorithm design pattern:
 
 We'll grab a node with an indegree of 0, add it to our topological ordering and remove it from the graph:
 
-![2.jpeg](2.jpeg)
+<img src="2.jpeg" height="1000" width="800">
 
 ## ****Time and Space Complexity****
 
