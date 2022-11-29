@@ -12,11 +12,11 @@ In this case, a topological ordering is just a legitimate task sequence. A topol
 
 # Example
 
-<img src="example.jpeg" height="500" width="500">
+<img src="example.jpeg" height="600" width="700">
 
 # Algorithm
 
-![1.jpeg](1.jpeg)
+<img src="1.jpeg" height="300" width="400">
 
 ```
 topological_sort(N, adj[N][N])
