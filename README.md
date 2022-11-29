@@ -12,7 +12,7 @@ In this case, a topological ordering is just a legitimate task sequence. A topol
 
 # Example
 
-![example.jpeg](example.jpeg)
+<img src="example.jpg" height="500" width="500">
 
 # Algorithm
 
