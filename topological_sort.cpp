@@ -1,66 +1,48 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
-class Graph {
-    int V;
-    list<int>* adj;
-    void topologicalSortUtil(int v, bool visited[],stack<int>& Stack);
  
-public:
-    Graph(int V);
-    void addEdge(int v, int w);
-    void topologicalSort();
-};
- 
-Graph::Graph(int V){
-    this->V = V;
-    adj = new list<int>[V];
-}
- 
-void Graph::addEdge(int v, int w){
-    adj[v].push_back(w);
-}
- 
-void Graph::topologicalSortUtil(int v, bool visited[],stack<int>& Stack){
-    visited[v] = true;
-    list<int>::iterator i;
-    for (i = adj[v].begin(); i != adj[v].end(); ++i)
-        if (!visited[*i])
-            topologicalSortUtil(*i, visited, Stack);
-    Stack.push(v);
-}
-
-void Graph::topologicalSort(){
-    stack<int> Stack;
-    bool* visited = new bool[V];
-    for (int i = 0; i < V; i++)
-        visited[i] = false;
-    for (int i = 0; i < V; i++)
-        if (visited[i] == false)
-            topologicalSortUtil(i, visited, Stack);
-
-    while (Stack.empty() == false) {
-        cout << Stack.top() << " ";
-        Stack.pop();
-    }
-     
-    delete [] visited;
-}
- 
-// Driver Code
 int main(){
 
-    Graph g(6);
-    g.addEdge(5, 2);
-    g.addEdge(5, 0);
-    g.addEdge(4, 0);
-    g.addEdge(4, 1);
-    g.addEdge(2, 3);
-    g.addEdge(3, 1);
+int i,j,k,n;
+int index[10],flag[10],count=0;
  
-    cout << "Following is a Topological Sort of the given graph : "<< endl;
+n=5;
+int adj[n][n]={{0,0,1,1,0},
+               {0,0,1,0,1},
+               {0,0,0,1,0},
+               {0,0,0,0,0},
+               {1,0,1,0,0}
+            };
+  
+    for(i=0;i<n;i++){
+        index[i]=0;
+        flag[i]=0;
+    }
+ 
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            index[i]=index[i]+adj[j][i];
+        }       
+    }
 
-    g.topologicalSort();
+ 
+    cout<<"\nThe topological ordering is:";
+ 
+    while(count<n){
+        for(k=0;k<n;k++){
+            if((index[k]==0) && (flag[k]==0)){
+                cout<<k+1<<" ";
+                flag[k]=1;
+            }
+ 
+            for(i=0;i<n;i++){
+                if(adj[i][k]==1)
+                    index[k]--;
+            }
+        }
+ 
+        count++;
+    }
  
     return 0;
 }
